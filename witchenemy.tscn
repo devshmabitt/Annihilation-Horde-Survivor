@@ -1,0 +1,180 @@
+[gd_scene load_steps=24 format=3 uid="uid://g27abckonof1"]
+
+[ext_resource type="Script" uid="uid://ciy1tqpgyy5ah" path="res://witchenemy.gd" id="1_xd38q"]
+[ext_resource type="Texture2D" uid="uid://bxteax78dgm3u" path="res://Sprites/Witchdie1.png" id="2_vgduh"]
+[ext_resource type="Texture2D" uid="uid://xjetmvgl8cv6" path="res://Sprites/Witchdie2.png" id="3_4oq0b"]
+[ext_resource type="Texture2D" uid="uid://d1in3kb4s5dro" path="res://Sprites/Witchdie3.png" id="4_tu76k"]
+[ext_resource type="Texture2D" uid="uid://c6qvs462wha45" path="res://Sprites/Witchdie4.png" id="5_oxd5k"]
+[ext_resource type="Texture2D" uid="uid://cle8vua6u82pp" path="res://Sprites/Witchdie5.png" id="6_xbguk"]
+[ext_resource type="Texture2D" uid="uid://d0rrf1i6naf20" path="res://Sprites/Witchdie6.png" id="7_2h7x6"]
+[ext_resource type="Texture2D" uid="uid://deqvxpakhsfit" path="res://Sprites/monster_sprites.png" id="8_2h7x6"]
+[ext_resource type="Texture2D" uid="uid://c01bdu8vamtda" path="res://Sprites/Witchdie7.png" id="8_ohgmq"]
+[ext_resource type="Texture2D" uid="uid://clvhtc2ly6e14" path="res://Sprites/Witchdie8.png" id="9_feeth"]
+[ext_resource type="Texture2D" uid="uid://bohxx15f6820c" path="res://Sprites/Witch1.png" id="11_oe3wy"]
+[ext_resource type="AudioStream" uid="uid://c4ou8wel33x4v" path="res://witch-death.mp3" id="13_xd38q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afoyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwi8k"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ousu"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34wv"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgili"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yttr0"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsx5k"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q54g"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j27hp"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0st4m"]
+atlas = ExtResource("8_2h7x6")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8br5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vgduh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4oq0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tu76k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oxd5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xbguk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2h7x6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ohgmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_feeth")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwi8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ousu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yttr0")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_oe3wy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsx5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q54g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j27hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0st4m")
+}],
+"loop": true,
+"name": &"idle1",
+"speed": 8.0
+}]
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.656084, 0, 0, 0, 1.33743, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+script = ExtResource("1_xd38q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.58663, 0, 0, 0, 1.3543, 0, 0, 0, 1, 0, 1.25888, 0)
+shape = SubResource("CapsuleShape3D_afoyd")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2.67282, 0, 0, 0, 1.68418, 0, 0, 0, 1, 0, 1.22853, 0)
+modulate = Color(1, 1, 1, 0.8980392)
+billboard = 2
+shaded = true
+sprite_frames = SubResource("SpriteFrames_u8br5")
+animation = &"idle"
+autoplay = "idle"
+speed_scale = 1.33
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_xd38q")
+volume_db = 1.5
+unit_size = 2.0
+pitch_scale = 0.7
+bus = &"Sfx"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.4
+
+[node name="Despawn Timer" type="Timer" parent="."]
+wait_time = 45.0
+autostart = true
+
+[node name="Imp 3 Spawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Imp Spawn Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Imp 2 Spawn Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Despawn Timer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="Imp 3 Spawn Timer" to="." method="_on_imp_3_spawn_timer_timeout"]
+[connection signal="timeout" from="Imp Spawn Timer" to="." method="_on_imp_spawn_timer_timeout"]
+[connection signal="timeout" from="Imp 2 Spawn Timer" to="." method="_on_imp_2_spawn_timer_timeout"]

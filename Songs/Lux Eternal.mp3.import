@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://35b6oewqpew8"
+path="res://.godot/imported/Lux Eternal.mp3-5abda39935cd27fd3653824d94c59429.mp3str"
+
+[deps]
+
+source_file="res://Songs/Lux Eternal.mp3"
+dest_files=["res://.godot/imported/Lux Eternal.mp3-5abda39935cd27fd3653824d94c59429.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

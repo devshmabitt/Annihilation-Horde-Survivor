@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://drb6bcwy0meqa"
+path="res://.godot/imported/At Death's Door.wav-236b5f1ab0743e36b4f38455117d4abe.sample"
+
+[deps]
+
+source_file="res://Songs/At Death's Door.wav"
+dest_files=["res://.godot/imported/At Death's Door.wav-236b5f1ab0743e36b4f38455117d4abe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://c148d14s7v1ey"]
+
+[ext_resource type="Texture2D" uid="uid://deqvxpakhsfit" path="res://Sprites/monster_sprites.png" id="1_1ti1u"]
+[ext_resource type="Script" uid="uid://dvxkxj0m3wu66" path="res://enemy.gd" id="1_2ftgn"]
+[ext_resource type="AudioStream" uid="uid://qxfjnbqrobwf" path="res://monster_die.wav" id="2_7xj8c"]
+[ext_resource type="Texture2D" uid="uid://plhbp3qtf0nh" path="res://Sprites/Zombiedie1.png" id="2_hb8ge"]
+[ext_resource type="Texture2D" uid="uid://b4k10xtt8r1b2" path="res://Sprites/Zombiedie2.png" id="3_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://bj6dqrsk12oom" path="res://Sprites/Zombiedie3.png" id="4_dxifv"]
+[ext_resource type="Texture2D" uid="uid://dmbpv8yp1g1li" path="res://Sprites/Zombie2.png" id="6_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://b3v3f25fah670" path="res://Sprites/Zombie1.png" id="6_pwjut"]
+[ext_resource type="Texture2D" uid="uid://bv0heytcbxs3y" path="res://Sprites/Zombie.png" id="7_n0g06"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afoyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwi8k"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ousu"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34wv"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgili"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yttr0"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsx5k"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q54g"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j27hp"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0st4m"]
+atlas = ExtResource("1_1ti1u")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8br5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hb8ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e1ltt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dxifv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwi8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ousu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yttr0")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsx5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q54g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j27hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0st4m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_e1ltt")
+}, {
+"duration": 0.6,
+"texture": ExtResource("7_n0g06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pwjut")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_2ftgn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_afoyd")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3.64073, 0, 0, 0, 4.29204, 0, 0, 0, 1.3542, 0, 1.13039, 0)
+pixel_size = 0.009
+billboard = 2
+shaded = true
+sprite_frames = SubResource("SpriteFrames_u8br5")
+animation = &"death"
+autoplay = "idle_1"
+speed_scale = 1.34
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_7xj8c")
+volume_db = 1.0
+unit_size = 2.0
+bus = &"Sfx"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Despawn Timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Despawn Timer" to="." method="_on_despawn_timer_timeout"]

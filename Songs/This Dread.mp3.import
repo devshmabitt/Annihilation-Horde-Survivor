@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6hmh0yhwe5dm"
+path="res://.godot/imported/This Dread.mp3-fc4973b654ef6ca5e75aab218973dce3.mp3str"
+
+[deps]
+
+source_file="res://Songs/This Dread.mp3"
+dest_files=["res://.godot/imported/This Dread.mp3-fc4973b654ef6ca5e75aab218973dce3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

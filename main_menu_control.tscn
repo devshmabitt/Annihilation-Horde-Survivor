@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dha8vgx73ofj2"]
+
+[ext_resource type="Script" uid="uid://bv3q3dsg0jwd6" path="res://main_menu.gd" id="1_utvg7"]
+
+[node name="Main Menu Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_utvg7")
+
+[node name="Annihilation" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 217.0
+offset_right = 613.0
+offset_bottom = 332.0
+theme_override_font_sizes/font_size = 84
+text = "ANNIHILATION"
+
+[node name="Play" type="Button" parent="Annihilation"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 116.0
+offset_right = 43.0
+offset_bottom = 147.0
+scale = Vector2(3, 3)
+text = "Play"

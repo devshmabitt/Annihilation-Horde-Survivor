@@ -1,0 +1,157 @@
+[gd_scene load_steps=22 format=3 uid="uid://b6r5m8so057gd"]
+
+[ext_resource type="Script" uid="uid://kvajb03k465h" path="res://impenemy.gd" id="1_qcexh"]
+[ext_resource type="Texture2D" uid="uid://brax576bemcfn" path="res://Sprites/Impdie1.png" id="2_f7ism"]
+[ext_resource type="Texture2D" uid="uid://dfn7r2rb3jsse" path="res://Sprites/Impdie2.png" id="3_46lc1"]
+[ext_resource type="Texture2D" uid="uid://bqi0c05mswaqg" path="res://Sprites/Impdie3.png" id="4_cjdgk"]
+[ext_resource type="Texture2D" uid="uid://d2pcrrbg155bs" path="res://Sprites/Impdie4.png" id="5_8a4fe"]
+[ext_resource type="Texture2D" uid="uid://deqvxpakhsfit" path="res://Sprites/monster_sprites.png" id="5_cjdgk"]
+[ext_resource type="Texture2D" uid="uid://dj70goxo5mrd2" path="res://Sprites/Imp1.png" id="7_thfxu"]
+[ext_resource type="Texture2D" uid="uid://bh0ts4sshu71u" path="res://Sprites/Imp2.png" id="8_muqvb"]
+[ext_resource type="Texture2D" uid="uid://bi7rrilpdrq1t" path="res://Sprites/Imp3.png" id="9_78mti"]
+[ext_resource type="AudioStream" uid="uid://qxfjnbqrobwf" path="res://monster_die.wav" id="9_opuyu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afoyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwi8k"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ousu"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34wv"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgili"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yttr0"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsx5k"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q54g"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j27hp"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0st4m"]
+atlas = ExtResource("5_cjdgk")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8br5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f7ism")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_46lc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cjdgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8a4fe")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwi8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ousu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yttr0")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_thfxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_muqvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_78mti")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsx5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q54g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j27hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0st4m")
+}],
+"loop": true,
+"name": &"idle1",
+"speed": 8.0
+}]
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.223882, 0, 0, 0, 0.203077, 0, 0, 0, 0.717979, 0, 0.54465, 0)
+script = ExtResource("1_qcexh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.50977, 0, 0, 0, 5.05855, 0, 0, 0, 1, 0, 2.41765, 0)
+shape = SubResource("CapsuleShape3D_afoyd")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3.64073, 0, 0, 0, 4.29204, 0, 0, 0, 1.3542, 0, 1.13039, 0)
+pixel_size = 0.009
+billboard = 2
+shaded = true
+sprite_frames = SubResource("SpriteFrames_u8br5")
+animation = &"death"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+speed_scale = 1.34
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_opuyu")
+volume_db = 2.0
+unit_size = 2.0
+pitch_scale = 5.0
+bus = &"Sfx"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Despawn Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Despawn Timer" to="." method="_on_despawn_timer_timeout"]

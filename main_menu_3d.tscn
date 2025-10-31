@@ -1,0 +1,305 @@
+[gd_scene load_steps=31 format=3 uid="uid://cgjdhdvmsclqo"]
+
+[ext_resource type="Texture2D" uid="uid://dekegrssob2yl" path="res://Stone.png" id="1_oo6xs"]
+[ext_resource type="Script" uid="uid://csmm610debe2l" path="res://block.gd" id="2_ho7ws"]
+[ext_resource type="PackedScene" uid="uid://dha8vgx73ofj2" path="res://main_menu_control.tscn" id="3_qyrbl"]
+[ext_resource type="Texture2D" uid="uid://plhbp3qtf0nh" path="res://Sprites/Zombiedie1.png" id="4_uchu1"]
+[ext_resource type="Texture2D" uid="uid://b4k10xtt8r1b2" path="res://Sprites/Zombiedie2.png" id="5_ydasx"]
+[ext_resource type="Texture2D" uid="uid://bj6dqrsk12oom" path="res://Sprites/Zombiedie3.png" id="6_pmqos"]
+[ext_resource type="Texture2D" uid="uid://deqvxpakhsfit" path="res://Sprites/monster_sprites.png" id="7_u882i"]
+[ext_resource type="Texture2D" uid="uid://dmbpv8yp1g1li" path="res://Sprites/Zombie2.png" id="8_ynpnp"]
+[ext_resource type="Texture2D" uid="uid://bv0heytcbxs3y" path="res://Sprites/Zombie.png" id="9_pnxi1"]
+[ext_resource type="Texture2D" uid="uid://b3v3f25fah670" path="res://Sprites/Zombie1.png" id="10_4ehfl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4dq2"]
+albedo_color = Color(0.0862745, 0.329412, 0.160784, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_axt0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ohct5"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdx38"]
+albedo_color = Color(0.0988, 0.13, 0.10608, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbse"]
+albedo_color = Color(0.755386, 0.755386, 0.755386, 1)
+albedo_texture = ExtResource("1_oo6xs")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_uchu1"]
+material = SubResource("StandardMaterial3D_dwbse")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ydasx"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gxiw0"]
+sky_top_color = Color(0.281699, 0.216928, 0.510277, 1)
+sky_horizon_color = Color(0.306993, 0.0136764, 0.183926, 1)
+sky_cover_modulate = Color(0.1, 0.1, 0.1, 1)
+ground_bottom_color = Color(0.141176, 0.305882, 0.223529, 1)
+ground_horizon_color = Color(0.111478, 0.264589, 0.191556, 1)
+sun_angle_max = 6.95
+sun_curve = 0.3
+
+[sub_resource type="Sky" id="Sky_ic0uy"]
+sky_material = SubResource("ProceduralSkyMaterial_gxiw0")
+
+[sub_resource type="Environment" id="Environment_wnwr6"]
+background_mode = 2
+background_color = Color(0.643137, 0.643137, 0.643137, 1)
+sky = SubResource("Sky_ic0uy")
+fog_enabled = true
+fog_sky_affect = 0.1
+fog_height = -1.5
+fog_height_density = -0.03
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwi8k"]
+atlas = ExtResource("7_u882i")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ousu"]
+atlas = ExtResource("7_u882i")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34wv"]
+atlas = ExtResource("7_u882i")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgili"]
+atlas = ExtResource("7_u882i")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yttr0"]
+atlas = ExtResource("7_u882i")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsx5k"]
+atlas = ExtResource("7_u882i")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q54g"]
+atlas = ExtResource("7_u882i")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j27hp"]
+atlas = ExtResource("7_u882i")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0st4m"]
+atlas = ExtResource("7_u882i")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e66of"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uchu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ydasx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pmqos")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwi8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ousu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yttr0")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsx5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q54g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j27hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0st4m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ynpnp")
+}, {
+"duration": 0.6,
+"texture": ExtResource("9_pnxi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4ehfl")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}]
+
+[node name="MainMenu3D" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(27.5909, 0, 0, 0, 1, 0, 0, 0, 21.6831, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_m4dq2")
+mesh = SubResource("PlaneMesh_axt0k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ohct5")
+
+[node name="Block" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.39673, -1.21612, 0, 0.37399, 4.54178, 0, 0, 0, 1.32646, 11.0266, 1.98777, 4.04272)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+script = ExtResource("2_ho7ws")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.88343, 2.18755, -0.00786672, -0.672756, 6.12401, 0.00612917, 0.0103272, -0.0110832, 1.83397, -8.91255, 1.48253, 8.11031)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.46, 0, 0, 0, 8, 0, 0, 0, 2.256, 0.91892, 3.71408, -8.10477)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block9" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(61.1064, 0, 0, 0, 5.04, 0, 0, 0, 0.2256, 0.91892, 1.71408, -21.1048)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block9/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block10" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(61.1064, 0, 0, 0, 5.04, 0, 0, 0, 0.2256, 0.91892, 1.71408, 21.8952)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block10/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block11" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-2.67105e-06, 0, -0.2256, 0, 5.04, 0, 61.1064, 0, -9.86128e-09, 27.9189, 1.71408, -3.10477)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block11/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block12" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(-2.67105e-06, 0, -0.2256, 0, 5.04, 0, 61.1064, 0, -9.86128e-09, -27.0811, 1.71408, -3.10477)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block12/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block6" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.46, 0, 0, 0, 8, 0, 0, 0, 2.256, -17.4101, 3.71408, -3.49061)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block7" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.46, 0, 0, 0, 8, 0, 0, 0, 2.256, 19.8206, 1.64026, -10.9213)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block7/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block8" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.46, 0, 0, 0, 8, 0, 0, 0, 2.256, -14.759, 1.64026, 15.1141)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block8/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Block5" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.46, 0, 0, 0, 7.2587, 0.948428, 0, -3.36322, 2.04695, 0.91892, 2.27838, 15.6548)
+material_override = SubResource("StandardMaterial3D_jdx38")
+mesh = SubResource("BoxMesh_uchu1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Block5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Block5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ydasx")
+
+[node name="Main Menu Control" parent="." instance=ExtResource("3_qyrbl")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wnwr6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.810512, 0.337002, -0.479061, 0, 0.817899, 0.575362, 0.585722, -0.466338, 0.662917, 0, 8.42502, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.440794, 4.6954203)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3.64073, 0, 0, 0, 4.29204, 0, 0, 0, 1.3542, 0, 1.13039, 0)
+pixel_size = 0.009
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_e66of")
+animation = &"idle_1"
+speed_scale = 1.34

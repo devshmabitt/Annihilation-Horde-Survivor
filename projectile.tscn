@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://fx4m1cepquq1"]
+
+[ext_resource type="Script" uid="uid://csvkctnpivk7a" path="res://projectile.gd" id="1_a85iw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_akgne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxf0c"]
+albedo_color = Color(0.878821, 0.0798969, 5.77569e-07, 1)
+metallic_specular = 0.68
+emission_enabled = true
+emission = Color(0.752941, 0.0352941, 0.0745098, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dgwo2"]
+material = SubResource("StandardMaterial3D_qxf0c")
+
+[node name="Projectile" type="Area3D" groups=["hurtboxes"]]
+script = ExtResource("1_a85iw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_akgne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_dgwo2")

@@ -1,0 +1,530 @@
+[gd_scene load_steps=32 format=3 uid="uid://2go8h24o332j"]
+
+[ext_resource type="Script" uid="uid://cd03rvwwq6kgh" path="res://player.gd" id="1_ltc0k"]
+[ext_resource type="Texture2D" uid="uid://ducwu1mhnqckn" path="res://Sprites/gun_sprites.png" id="1_wsjox"]
+[ext_resource type="Texture2D" uid="uid://c1rhysu0hs3sb" path="res://Sprites/Holy SHotgun/HolyShotgunShoot1.png" id="2_606se"]
+[ext_resource type="Texture2D" uid="uid://hy42rt2w6tto" path="res://Sprites/shotgun.png" id="2_nvl01"]
+[ext_resource type="PackedScene" uid="uid://cihtp3231dapc" path="res://health_bar_3d.tscn" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://chkiwmons1vma" path="res://Sprites/shotgun2.png" id="3_ivps1"]
+[ext_resource type="Texture2D" uid="uid://bqqi0j7dos54k" path="res://Sprites/Holy SHotgun/HolyShotgunShoot2.png" id="3_u1c27"]
+[ext_resource type="Texture2D" uid="uid://d2nbiouq1kiwc" path="res://Sprites/Holy SHotgun/HolyShotgun.png" id="4_op7ga"]
+[ext_resource type="Texture2D" uid="uid://bw706r2aqhjbn" path="res://Sprites/KnightGuy.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://chyfjl5l7bkup" path="res://Sprites/Idle_Hand.png" id="5_b26j0"]
+[ext_resource type="Texture2D" uid="uid://qm7o0dqa6dy8" path="res://Sprites/Punch.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://buwdv4tsb820m" path="res://Sprites/Stone.png" id="6_1jxqw"]
+[ext_resource type="Script" uid="uid://ce3org3ss1rch" path="res://timesurvived.gd" id="7_dw050"]
+[ext_resource type="Script" uid="uid://dglhulmhuq35" path="res://FPS.gd" id="12_ivps1"]
+[ext_resource type="AudioStream" uid="uid://dxidtj53ada5h" path="res://Sprites/Holy SHotgun/doom-shotgun-2017-80549.mp3" id="13_606se"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7xmbu"]
+
+[sub_resource type="Animation" id="Animation_1jxqw"]
+resource_name = "Gun Sway"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.57, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, 1.64337, 0), Vector3(0, 1.3936, 0), Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dw050"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b26j0"]
+_data = {
+&"Gun Sway": SubResource("Animation_1jxqw"),
+&"RESET": SubResource("Animation_dw050")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcqdb"]
+atlas = ExtResource("1_wsjox")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf8j7"]
+atlas = ExtResource("1_wsjox")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lx7v"]
+atlas = ExtResource("1_wsjox")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0btv"]
+atlas = ExtResource("1_wsjox")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23jnc"]
+atlas = ExtResource("1_wsjox")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ouaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_op7ga")
+}],
+"loop": false,
+"name": &"Holy Shotgun Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_op7ga")
+}],
+"loop": false,
+"name": &"HolyShotgun Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle Hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nvl01")
+}],
+"loop": true,
+"name": &"Shotgun idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ivps1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nvl01")
+}],
+"loop": true,
+"name": &"ShotgunShoot",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Tomasaw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcqdb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf8j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lx7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0btv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23jnc")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7ghd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_b26j0")
+}],
+"loop": true,
+"name": &"Idle Hand",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_b26j0"]
+resource_name = "Punch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.133333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-6.70552e-08, 0.1, 0.133333, 0.233333, 0.333333, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(0, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(2, 0), Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n7ghd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvl01"]
+_data = {
+&"Punch": SubResource("Animation_b26j0"),
+&"RESET": SubResource("Animation_n7ghd")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvl01"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivps1"]
+bg_color = Color(0.0602, 0.3268, 0.86, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_blend = true
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ltc0k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["hurtboxes"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_7xmbu")
+
+[node name="RayCast3D" type="RayCast3D" parent="." groups=["hurtboxes"]]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 1.5, 0)
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 3
+
+[node name="Shotgun-RayCast3D" type="RayCast3D" parent="." groups=["hurtboxes"]]
+transform = Transform3D(40, 0, 0, 0, 8, 0, 0, 0, 8, 0, 1.5, 0)
+enabled = false
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 3
+
+[node name="Punch Raycast" type="RayCast3D" parent="."]
+transform = Transform3D(37, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
+target_position = Vector3(0, 0, -3.5)
+collision_mask = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b26j0")
+}
+speed_scale = 2.4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GunBase" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GunBase"]
+position = Vector2(20, -197)
+scale = Vector2(1.366211, 1.2573241)
+sprite_frames = SubResource("SpriteFrames_2ouaf")
+animation = &"Holy Shotgun Shoot"
+autoplay = "HolyShotgun Idle"
+speed_scale = 1.5
+
+[node name="HealthBar 3D" parent="CanvasLayer/GunBase" instance=ExtResource("3_hqtel")]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -59.0
+offset_right = 76.0
+offset_bottom = 41.0
+fill_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GunBase"]
+position = Vector2(24.5001, -17)
+scale = Vector2(1.54688, 1.75)
+texture = ExtResource("4_sweqy")
+
+[node name="Idle Hand" type="AnimatedSprite2D" parent="CanvasLayer/GunBase"]
+visible = false
+position = Vector2(1040, -289)
+scale = Vector2(2.182, 4.82875)
+sprite_frames = SubResource("SpriteFrames_n7ghd")
+animation = &"Idle Hand"
+
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.262745)
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -35.0
+offset_right = 52.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -30.0
+offset_right = 37.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "You Died!"
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -2.0
+offset_right = 32.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="Restart" type="Label" parent="CanvasLayer"]
+offset_left = 271.0
+offset_top = 547.0
+offset_right = 359.0
+offset_bottom = 570.0
+text = "R to restart"
+
+[node name="Punch" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(253, 449)
+scale = Vector2(2.30183, 2.45)
+texture = ExtResource("5_dw050")
+hframes = 5
+
+[node name="HandAnims" type="AnimationPlayer" parent="CanvasLayer/Punch"]
+libraries = {
+&"": SubResource("AnimationLibrary_nvl01")
+}
+speed_scale = 1.5
+movie_quit_on_finish = true
+
+[node name="FPS" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS: "
+script = ExtResource("12_ivps1")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_606se")
+volume_db = -16.473
+bus = &"Sfx"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 271.0
+offset_top = 569.0
+offset_right = 912.0
+offset_bottom = 825.0
+texture = ExtResource("6_1jxqw")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 336.0
+offset_top = 586.0
+offset_right = 446.0
+offset_bottom = 626.0
+script = ExtResource("7_dw050")
+
+[node name="Minutes" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 13.0
+offset_right = 63.0
+offset_bottom = 36.0
+text = "00: "
+
+[node name="Seconds" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 13.0
+offset_right = 94.0
+offset_bottom = 36.0
+text = "00"
+
+[node name="Milliseconds" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 47.0
+offset_top = 12.0
+offset_right = 87.0
+offset_bottom = 35.0
+text = "000"
+
+[node name="Time Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 20.0
+text = "Time Survived "
+
+[node name="Punch Cooldown" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="PunchCooldownBar" type="ProgressBar" parent="."]
+offset_left = 674.0
+offset_top = 594.0
+offset_right = 714.0
+offset_bottom = 634.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nvl01")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ivps1")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="PunchCooldownBar"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -22.0
+offset_right = 71.0
+offset_bottom = 1.0
+text = "Blood Punch"
+
+[node name="Label2" type="Label" parent="PunchCooldownBar"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 37.0
+offset_right = 161.0
+offset_bottom = 60.0
+scale = Vector2(0.76, 0.828502)
+text = "RMB"
+
+[connection signal="animation_finished" from="CanvasLayer/Punch/HandAnims" to="." method="_on_hand_anims_animation_finished"]
+[connection signal="timeout" from="Punch Cooldown" to="." method="_on_punch_cooldown_timeout"]
